@@ -1,0 +1,22 @@
+services:
+    mysql-db:
+        image: mysql:8.0.1
+        container_name: mysql-db
+        environment:
+            MYSQL_ROOT_PASSWORD: i20213tn073
+            MYSQL_USER: ordinario
+            MYSQL_PASSWORD: ordinario2024
+            MYSQL_DATABASE: ordinario_db
+        ports:
+         - "9200:3306"
+
+    ordinario:
+        build:
+            context: ./examen
+            dockerfile: Dockerfile
+        container_name: ordinario
+        ports: 
+         - "9100:80"
+        volumes:
+         - ./ordinario-edit:/usr/share/nginx/html
+
